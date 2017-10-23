@@ -8,6 +8,12 @@
 <title>Products</title>
 </head>
 <body>
+<section>
+		<div class="pull-right" style="padding-right: 50px">
+		<!-- 在URL后加上 "?language=en" 或者 "?language=nl"，以此来选择语言-->
+			<a href="?language=en">English</a>|<a href="?language=nl">Dutch</a>
+		</div>
+	</section>
    <section>
       <div class="jumbotron">
          <div class="container">
@@ -22,7 +28,8 @@
             <legend>Add new product</legend>
 
             <div class="form-group">
-               <label class="control-label col-lg-2 col-lg-2" for="productId"><spring:message code="addProduct.form.productId.label"/></label>
+               <label class="control-label col-lg-2 col-lg-2" for="productId">
+               <spring:message code="addProduct.form.productId.label"/></label>
                <div class="col-lg-10">
                   <form:input id="productId" path="productId" type="text" class="form:input-large"/>
                </div>
