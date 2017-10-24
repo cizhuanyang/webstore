@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -83,8 +84,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/products/add", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct, BindingResult result,HttpServletRequest request) {
-		
+	public String processAddNewProductForm(@ModelAttribute("newProduct")@Valid Product newProduct, BindingResult result,HttpServletRequest request) {
+		//若product无效，则返回
+		if(result.hasErrors()) {
+			   return "addProduct";
+		}
 		String[] suppressedFields = result.getSuppressedFields();
 		   if (suppressedFields.length > 0) {
 		      throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
@@ -100,6 +104,7 @@ public class ProductController {
 		         throw new RuntimeException("Product Image saving failed", e);
 		      }
 		      }
+		   
 	   productService.addProduct(newProduct);
 	   return "redirect:/market/products";
 	}
