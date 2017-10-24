@@ -1,9 +1,9 @@
 package com.packt.webstore.config;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Locale;
-
-
+import java.util.Set;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -37,6 +37,8 @@ import org.springframework.web.util.UrlPathHelper;
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.interceptor.ProcessingTimeLogInterceptor;
 import com.packt.webstore.interceptor.PromoCodeInterceptor;
+import com.packt.webstore.validator.ProductValidator;
+import com.packt.webstore.validator.UnitsInStockValidator;
 
 @Configuration
 @EnableWebMvc
@@ -162,5 +164,16 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
     @Override
     public Validator getValidator(){
        return validator();
+    }
+    
+    @Bean
+    public ProductValidator productValidator () {
+       Set<Validator> springValidators = new HashSet<>();
+       springValidators.add(new UnitsInStockValidator());
+       
+       ProductValidator productValidator = new ProductValidator();
+       productValidator.setSpringValidators(springValidators);
+       
+       return productValidator;
     }
 }
