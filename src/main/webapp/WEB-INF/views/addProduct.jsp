@@ -12,6 +12,8 @@
 		<div class="pull-right" style="padding-right: 50px">
 		<!-- 在URL后加上 "?language=en" 或者 "?language=nl"，以此来选择语言-->
 			<a href="?language=en">English</a>|<a href="?language=nl">Dutch</a>
+			
+			<a href="<c:url value="/logout" />">Logout</a>
 		</div>
 	</section>
    <section>
