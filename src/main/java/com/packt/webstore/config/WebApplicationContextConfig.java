@@ -166,6 +166,7 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
        return validator();
     }
     
+    //½áºÏBean validator ºÍ spring validator
     @Bean
     public ProductValidator productValidator () {
        Set<Validator> springValidators = new HashSet<>();

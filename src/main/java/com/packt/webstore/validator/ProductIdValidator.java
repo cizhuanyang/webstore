@@ -7,6 +7,7 @@ import com.packt.webstore.domain.Product;
 import com.packt.webstore.exception.ProductNotFoundException;
 import com.packt.webstore.service.ProductService;
 
+//使用bean validation对是否有相同的productid做验证
 public class ProductIdValidator implements ConstraintValidator<ProductId, String>{
    
    @Autowired

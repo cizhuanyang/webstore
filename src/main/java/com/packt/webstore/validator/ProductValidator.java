@@ -16,7 +16,7 @@ public class ProductValidator implements Validator{
    private Set<Validator> springValidators;
 
    public ProductValidator() {
-      springValidators = new HashSet<Validator>();   
+      springValidators = new HashSet<Validator>();     
    }
 
    public void setSpringValidators(Set<Validator> springValidators) {
