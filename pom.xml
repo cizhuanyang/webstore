@@ -7,6 +7,30 @@
   <build>
   <plugins>
   <plugin>
+        <groupId>org.eclipse.m2e</groupId>
+        <artifactId>lifecycle-mapping</artifactId>
+        <version>1.0.0</version>
+        <configuration>
+        <lifecycleMappingMetadata>
+            <pluginExecutions>
+                <pluginExecution>
+                    <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <versionRange>[3.1,)</versionRange>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </pluginExecutionFilter>
+                    <action> 
+                        <ignore></ignore>
+                    </action>
+                </pluginExecution>
+            </pluginExecutions>
+        </lifecycleMappingMetadata>
+    </configuration>
+</plugin>
+  <plugin>
   <groupId>
   org.apache.maven.plugins
   </groupId>
@@ -97,6 +121,11 @@
   		<groupId>org.springframework.webflow</groupId>
   		<artifactId>spring-webflow</artifactId>
   		<version>2.4.2.RELEASE</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.tiles</groupId>
+  		<artifactId>tiles-extras</artifactId>
+  		<version>3.0.5</version>
   	</dependency>
   </dependencies>
 </project>
